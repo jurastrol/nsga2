@@ -24,18 +24,10 @@ void initialize_pop (population *pop)
 void initialize_ind (individual *ind)
 {
 	int i;
-	for(i=0;i<AA;i++){
-			ind->valor[i]=22;
+	for(i=0;i<nreal;i++){
+			ind->xreal[i]=22;
 	}
-		generarRandom(ind->valor);
+		generarRandom(ind->xreal);
     return;
 }
 
-void mostrarVector(int v[])
-{
-     int i;
-
-     printf("VECTOR\n");
-     for (i = 0; i < AA; i++)
-         printf("%d ", v[i]);
-}

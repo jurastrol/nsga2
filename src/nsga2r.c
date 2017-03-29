@@ -254,7 +254,10 @@ int main (int argc, char **argv)
     fprintf(fpt2,"# of objectives = %d, # of constraints = %d, # of real_var = %d, # of bits of bin_var = %d, constr_violation, rank, crowding_distance\n",nobj,ncon,nreal,bitlength);
     fprintf(fpt3,"# of objectives = %d, # of constraints = %d, # of real_var = %d, # of bits of bin_var = %d, constr_violation, rank, crowding_distance\n",nobj,ncon,nreal,bitlength);
     fprintf(fpt4,"# of objectives = %d, # of constraints = %d, # of real_var = %d, # of bits of bin_var = %d, constr_violation, rank, crowding_distance\n",nobj,ncon,nreal,bitlength);*/
-    nbinmut = 0;
+    nbin = 0;
+    nreal = AA;
+    nobj=3;
+    ncon=0;
     popsize = POPSIZE;
 /*    nrealmut = 0;
     nbincross = 0;
@@ -268,20 +271,12 @@ int main (int argc, char **argv)
 
     randomize();
     initialize_pop (parent_pop);
-
-    for(i=0;i<popsize;i++){
-    	test_problem(& parent_pop->ind[i],fPR);
-    	mostrarVector(parent_pop->ind[i].valor);
-    	printf("Resultado: %f\n", parent_pop->ind[i].rank);
-    }
-
-    /*PRUEBA CANONICO*/
-    for(i=0;i<AA;i++){
-    	prueba.valor[i]= canonical[i];
-    }
-    test_problem(&prueba,fPR);
-	mostrarVector(prueba.valor);
-	printf("Resultado: %f\n", prueba.rank);
+    initialize_pop (child_pop);
+    evaluate_pop (parent_pop);
+    evaluate_pop (child_pop);
+    merge (parent_pop, child_pop, mixed_pop);
+    fill_nondominated_sort (mixed_pop, parent_pop);
+    report_feasible2(parent_pop);
 
     /*test_problem(parent_pop.ind[0],fPR);*/
 /*    printf("\n Initialization done, now performing first generation");

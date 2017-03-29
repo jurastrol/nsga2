@@ -113,11 +113,11 @@ double rndreal (double low, double high)
 }
 
 
-void generarRandom(int v[])
+void generarRandom(double v[])
 {
      int i, j, num, dupl;
 
-     for (i = 0; i < AA; i++){
+     for (i = 0; i < nreal; i++){
          num = rnd(0,19);
          dupl = 0;
          for (j = 0; j <= i; j++){

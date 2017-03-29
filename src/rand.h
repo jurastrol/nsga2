@@ -15,7 +15,7 @@ void advance_random (void);
 double randomperc(void);
 int rnd (int low, int high);
 double rndreal (double low, double high);
-void generarRandom(int v[]);
+void generarRandom(double v[]);
 
 
 

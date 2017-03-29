@@ -91,3 +91,46 @@ void report_feasible (population *pop, FILE *fpt)
     }
     return;
 }
+
+void report_feasible2 (population *pop)
+{
+    int i, j, k;
+    for (i=0; i<popsize; i++)
+    {
+        if (pop->ind[i].constr_violation == 0.0 && pop->ind[i].rank==1)
+        {
+            for (j=0; j<nobj; j++)
+            {
+                printf("%e\t",pop->ind[i].obj[j]);
+            }
+            if (ncon!=0)
+            {
+                for (j=0; j<ncon; j++)
+                {
+                    printf("%e\t",pop->ind[i].constr[j]);
+                }
+            }
+            if (nreal!=0)
+            {
+                for (j=0; j<nreal; j++)
+                {
+                    printf("%d\t",(int)pop->ind[i].xreal[j]);
+                }
+            }
+            if (nbin!=0)
+            {
+                for (j=0; j<nbin; j++)
+                {
+                    for (k=0; k<nbits[j]; k++)
+                    {
+                        printf("%d\t",pop->ind[i].gene[j][k]);
+                    }
+                }
+            }
+            printf("%e\t",pop->ind[i].constr_violation);
+            printf("%f\t",pop->ind[i].rank);
+            printf("%e\n",pop->ind[i].crowd_dist);
+        }
+    }
+    return;
+}

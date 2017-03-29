@@ -45,7 +45,6 @@ typedef struct
     double *obj;
     double *constr;
     double crowd_dist;
-    int valor[AA];
 }
 individual;
 
@@ -121,7 +120,7 @@ void crowding_fill (population *mixed_pop, population *new_pop, int count, int f
 
 void initialize_pop (population *pop);
 void initialize_ind (individual *ind);
-void mostrarVector(int v[]);
+
 
 void insert (list *node, int x);
 list* del (list *node);
@@ -134,12 +133,13 @@ void mutation_ind (individual *ind);
 void bin_mutate_ind (individual *ind);
 void real_mutate_ind (individual *ind);
 
-double test_problem (individual* ind, int flag);
+double test_problem (individual* ind);
 
 void assign_rank_and_crowding_distance (population *new_pop);
 
 void report_pop (population *pop, FILE *fpt);
 void report_feasible (population *pop, FILE *fpt);
+void report_feasible2 (population *pop);
 void report_ind (individual *ind, FILE *fpt);
 
 void quicksort_front_obj(population *pop, int objcount, int obj_array[], int obj_array_size);
