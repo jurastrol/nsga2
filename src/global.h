@@ -8,7 +8,7 @@
 # define PI 3.14159265358979
 
 # define AA 20
-# define POPSIZE 100
+# define POPSIZE 8
 # define fPR 0
 # define fHI 1
 # define fMV 2

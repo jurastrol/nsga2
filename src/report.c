@@ -94,16 +94,17 @@ void report_feasible (population *pop, FILE *fpt)
 
 void report_feasible2 (population *pop)
 {
-    int i, j, k;
+    int i, j;
     for (i=0; i<popsize; i++)
     {
         if (pop->ind[i].constr_violation == 0.0 && pop->ind[i].rank==1)
         {
-            for (j=0; j<nobj; j++)
+           for (j=0; j<nobj; j++)
             {
                 printf("%e\t",pop->ind[i].obj[j]);
             }
-            if (ncon!=0)
+           printf("\n");
+            /* if (ncon!=0)
             {
                 for (j=0; j<ncon; j++)
                 {
@@ -117,7 +118,7 @@ void report_feasible2 (population *pop)
                     printf("%d\t",(int)pop->ind[i].xreal[j]);
                 }
             }
-            if (nbin!=0)
+           if (nbin!=0)
             {
                 for (j=0; j<nbin; j++)
                 {
@@ -128,8 +129,8 @@ void report_feasible2 (population *pop)
                 }
             }
             printf("%e\t",pop->ind[i].constr_violation);
-            printf("%f\t",pop->ind[i].rank);
-            printf("%e\n",pop->ind[i].crowd_dist);
+            printf("%f\t\n",pop->ind[i].rank);
+            printf("%e\n",pop->ind[i].crowd_dist);*/
         }
     }
     return;

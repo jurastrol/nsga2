@@ -62,7 +62,14 @@ void bin_mutate_ind (individual *ind)
 /* Routine for real polynomial mutation of an individual */
 void real_mutate_ind (individual *ind)
 {
-    int j;
+	int ale1, ale2, aux;
+	ale1 = rnd(0,19);
+	ale2 = rnd(0,19);
+	aux = ind->xreal[ale1];
+	ind->xreal[ale1] = ind->xreal[ale2];
+	ind->xreal[ale2] = aux;
+
+   /* int j;
     double rnd, delta1, delta2, mut_pow, deltaq;
     double y, yl, yu, val, xy;
     for (j=0; j<nreal; j++)
@@ -96,6 +103,6 @@ void real_mutate_ind (individual *ind)
             ind->xreal[j] = y;
             nrealmut+=1;
         }
-    }
+    }*/
     return;
 }

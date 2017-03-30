@@ -121,7 +121,6 @@ void generarRandom(double v[])
          num = rnd(0,19);
          dupl = 0;
          for (j = 0; j <= i; j++){
-             /*printf("j: %d v[j]: %d num: %d \n", j, v[j],num);*/
              if (num == v[j]){
                 dupl = 1;
                 break;

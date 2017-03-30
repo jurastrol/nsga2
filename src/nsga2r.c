@@ -2,6 +2,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <unistd.h>
 
 # include "global.h"
 # include "rand.h"
@@ -259,6 +260,7 @@ int main (int argc, char **argv)
     nobj=3;
     ncon=0;
     popsize = POPSIZE;
+    ngen= 2;
 /*    nrealmut = 0;
     nbincross = 0;
     nrealcross = 0;*/
@@ -270,15 +272,29 @@ int main (int argc, char **argv)
     allocate_memory_pop (mixed_pop, 2*popsize);
 
     randomize();
+    printf("\n Initialization done, now performing first generation\n");
     initialize_pop (parent_pop);
-    initialize_pop (child_pop);
+    decode_pop(parent_pop);
     evaluate_pop (parent_pop);
-    evaluate_pop (child_pop);
-    merge (parent_pop, child_pop, mixed_pop);
-    fill_nondominated_sort (mixed_pop, parent_pop);
+    assign_rank_and_crowding_distance (parent_pop);
     report_feasible2(parent_pop);
+    for (i=2; i<=ngen; i++)
+    {
+   	 printf("\n gen = %d\n",i);
+   	 printf("\n PADREEEEEE\n");
+   	 report_feasible2(parent_pop);
+    	 selection (parent_pop, child_pop);
+    	 mutation_pop (child_pop);
+    	 evaluate_pop (child_pop);
+    	 printf("\n HIJOOOOOO\n");
+    	    	 report_feasible2(child_pop);
+    	 merge (parent_pop, child_pop, mixed_pop);
+       	 fill_nondominated_sort (mixed_pop, parent_pop);
+       	printf("\n PADREEEEEE\n");
+       	   	 report_feasible2(parent_pop);
+    }
 
-    /*test_problem(parent_pop.ind[0],fPR);*/
+
 /*    printf("\n Initialization done, now performing first generation");
     decode_pop(parent_pop);
     evaluate_pop (parent_pop);
